@@ -68,6 +68,15 @@ app.post('/api/exercise/new-user', function(req, res) {
   });
 });
 
+// Query users:
+app.get('/api/exercise/users', function(req, res) {
+  User.find({})
+      .select('username _id')
+      .exec(function(err, docs) {
+        res.json(docs);
+      });
+});
+
 // New exercide endpoint:
 app.post('/api/exercise/add', function(req, res) {
   
